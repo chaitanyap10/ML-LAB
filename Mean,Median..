@@ -1,0 +1,55 @@
+# Mean
+l=[]
+n=int(input("Enter the number"))
+for i in range (0,n):
+    e=int(input())
+    l.append(e)
+sum=0
+for i in range(len(l)):
+    sum=sum+l[i]
+mean=sum/len(l)
+print("Mean",mean)
+
+
+# median
+for i in range (0,n-1):
+    for j in range(n-1):
+        if l[j]>l[j+1]:
+            l[j],l[j+1]=l[j+1],l[j]
+if n%2==0:
+    median1=l[n//2]
+    median2=l[n//2 - 1]
+    median=(median1+median2)/2
+else:
+    median=l[n//2]
+print("Median",median)
+
+
+# Mode
+def mode(l):
+    frequency={}
+    for i in l:
+        frequency.setdefault(i,0)
+        frequency[i]+=1
+    max_fre=max(frequency.values())
+    high_fre=[]
+    
+    for n,fre in frequency.items():
+        if fre==max_fre:
+            high_fre.append(n)        
+    return high_fre
+
+mode(l)
+
+
+#Variance
+p=0
+for i in l:
+    p+=((i-mean)**2)
+variance=p/len(l)
+print("Variance",variance)
+
+
+#Standard deviation
+stddev=variance**0.5
+print("Standard deviation",stddev)
